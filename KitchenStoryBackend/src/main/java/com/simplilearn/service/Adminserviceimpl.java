@@ -15,19 +15,10 @@ public class Adminserviceimpl implements Adminservice {
 	AdminRepository adminrepository;
 	
 	
-	public boolean validateAdmin(Admin admin) {
+	public List<Admin> validateAdmin() {
 		
 		List<Admin> admins=adminrepository.findAll();
-		for(Admin admin1:admins)
-		{
-			if((admin1.getAdminName().equals(admin.getAdminName()))&&(admin1.getAdminPassword().equals(admin.getAdminPassword())))
-			{
-				return true;
-			}	
-         		
-		}
-		
-		 return false;		
+		return admins;		
 	}
 
 	
@@ -36,5 +27,8 @@ public class Adminserviceimpl implements Adminservice {
 		adminrepository.save(admin);
 		
 	}
+
+
+	
 
 }

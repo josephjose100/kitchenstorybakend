@@ -1,11 +1,11 @@
 package com.simplilearn.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.simplilearn.exception.ResourceNotFoundException;
 import com.simplilearn.model.Item;
 import com.simplilearn.repository.ItemRepository;
 
@@ -21,10 +21,14 @@ public class Itemserviceimpl implements Itemservice{
 	}
 
 
-	public void removeItem(Item item) {
+	public void removeItem(int id) {
 	
-        itemrepository.delete(item);		
+		Item item = itemrepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
+	
+		 itemrepository.delete(item);
 	}
+	
 
 	
 	public List<Item> viewAll() {
@@ -32,20 +36,16 @@ public class Itemserviceimpl implements Itemservice{
 		return itemrepository.findAll();
 	}
 
+
 	
-	public List<Item> viewSorted(String name) {
+
+
+	
 		
-		List<Item> items=viewAll();
-		List<Item> sortedItems=new ArrayList<>();
-		for(Item item:items)
-		{
-			if((item.getpName().equals(name))||(item.getpCategory().equals(name)))
-			{
-			  sortedItems.add(item);	
-			}
-			
-		}
-		return sortedItems;
-	}
+	
+	
+
+	
+	
 
 }
