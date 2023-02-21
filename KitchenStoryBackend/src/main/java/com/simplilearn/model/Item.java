@@ -13,15 +13,17 @@ public class Item {
 	private int id;
 	private String pName;
 	private String pCategory;
+	private float price;
 	public Item() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Item(int id, String pName, String pCategory) {
+	public Item(int id, String pName, String pCategory, float price) {
 		super();
 		this.id = id;
 		this.pName = pName;
 		this.pCategory = pCategory;
+		this.price = price;
 	}
 	public int getId() {
 		return id;
@@ -41,6 +43,14 @@ public class Item {
 	public void setpCategory(String pCategory) {
 		this.pCategory = pCategory;
 	}
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float price) {
+		this.price = price;
+	}
+	
+	
 	
 	
 	
